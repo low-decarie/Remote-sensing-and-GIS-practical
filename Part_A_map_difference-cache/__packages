@@ -1,0 +1,9 @@
+base
+knitr
+dplyr
+ggplot2
+tidyr
+scales
+RNetCDF
+gridExtra
+maps
