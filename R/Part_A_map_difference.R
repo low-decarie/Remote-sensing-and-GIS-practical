@@ -8,6 +8,7 @@ require(ggplot2)
 require(tidyr)
 require(scales)
 require(RNetCDF)
+require(maps)
 
 #Set the theme for the plots
 theme_set(theme_bw())

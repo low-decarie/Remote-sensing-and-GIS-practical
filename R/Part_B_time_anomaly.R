@@ -10,6 +10,9 @@ require(scales)
 
 theme_set(theme_bw())
 
+# Save all future plots in this PDF
+pdf("./Plots/file.pdf",width=7,height=7)
+
 ## Function for loading Giovanni time series data
 load_giovanni_time <- function(path){
   file_data <- read.csv(path, 
@@ -19,7 +22,7 @@ load_giovanni_time <- function(path){
                                         "NA",
                                         "Site",
                                         "Bleached"))
-  file_data$Date <- parse_date_time(file_data$Date, orders="ymdhms")
+  file_data$Date <- parse_date_time(file_data$Date, orders="ymdHMS")
   return(file_data)
 }
 
@@ -79,9 +82,8 @@ p <- qplot(data=annual_integrated_anomaly,
            geom="boxplot")
 print(p)
 
-# Save PDF of plot
-pdf("./Plots/file.pdf",width=7,height=7)
-print(p)
+
+#Close the PDF
 graphics.off()
 
 
