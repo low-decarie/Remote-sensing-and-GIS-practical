@@ -8,6 +8,9 @@ require(lubridate)
 require(tidyr)
 require(scales)
 
+#install.packages(c("dplyr","ggplot2", "gridExtra","lubridate","tidyr","scales"))
+
+
 theme_set(theme_bw())
 
 # Save all future plots in this PDF
@@ -79,7 +82,9 @@ p <- qplot(data=annual_integrated_anomaly,
            y=aia_Temperature,
            ylab="y axis label",
            colour=Bleached,
-           geom="boxplot")
+           geom="boxplot")+
+  scale_x_discrete(labels=c("site_1" = "Renamed site 1", "site_2" = "Rename site 2",
+                            "site_3" = "Rename site 3"))
 print(p)
 
 

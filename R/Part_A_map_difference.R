@@ -3,6 +3,7 @@ rm(list=ls()) #Clear memory
 
 #Load required packages
 #install missing packages using : "install.packages("package_name")
+#install.packages(c("dplyr","ggplot2", "tidyr", "scales", "RNetCDF", "maps"))
 require(dplyr)
 require(ggplot2)
 require(tidyr)
