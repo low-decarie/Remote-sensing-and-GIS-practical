@@ -26,8 +26,8 @@ read_giovanni_nc_map <- function(giovanni_nc_map_file){
   
   #Convert its content to a data frame
   giovanni_map_dataframe <- as.data.frame(giovanni_map_data[1])
-  names(giovanni_map_dataframe) <- giovanni_map_data[[2]]
-  giovanni_map_dataframe$lon <- giovanni_map_data[[3]]
+  names(giovanni_map_dataframe) <- giovanni_map_data[["lat"]]  #This was edited to reflect selecting by name rather than by index because of the addition of lat_bnds and lon_bnds to some data files
+  giovanni_map_dataframe$lon <- giovanni_map_data[["lon"]]
   
   #Switch from a wide matrix format
   #in which values for longitude are given across columns
@@ -44,10 +44,16 @@ read_giovanni_nc_map <- function(giovanni_nc_map_file){
 climatic_average <- read_giovanni_nc_map("./Data/climatic_average_sea.nc")
 climatic_average <- rename(climatic_average, climatic_temperature=temperature)
 
+#Plot climatic average as check
+#qplot(data=climatic_average, x=as.numeric(lon), y=as.numeric(lat), fill=climatic_temperature, geom="raster")
+
 # Single year/month data ####
 #Apply the function to single year/month data
 single_year <- read_giovanni_nc_map("./Data/single_year_sea.nc")
 single_year <- rename(single_year,year_temperature=temperature)
+
+#Plot single year as check
+#qplot(data=single_year, x=as.numeric(lon), y=as.numeric(lat), fill=year_temperature, geom="raster")
 
 # Merge the data  ####
 anomaly <- single_year
